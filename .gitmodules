@@ -1,0 +1,3 @@
+[submodule "examples/basic/components/WiFiManager"]
+	path = examples/basic/components/WiFiManager
+	url = https://github.com/ixsiid/WiFiManager.git
