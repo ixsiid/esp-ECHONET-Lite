@@ -4,7 +4,7 @@
 
 /// ELObject
 
-const char ELObject::TAG[] = " EL Obj";
+const char ELObject::TAG[] = "EL  Obj";
 
 uint8_t ELObject::buffer[]	    = {};
 size_t ELObject::buffer_length    = sizeof(elpacket_t);
@@ -12,6 +12,14 @@ ELObject::elpacket_t* ELObject::p = (elpacket_t*)ELObject::buffer;
 uint8_t* ELObject::epc_start	    = buffer + sizeof(elpacket_t);
 
 uint8_t* ELObject::maker_code = new uint8_t[4]{0x03, 0xff, 0xff, 0xff};  // 開発用
+
+uint8_t* ELObject::generate_identify(ELObject * object) {
+	uint8_t* buffer = new uint8_t[0x12]{0x11, 0xfe,
+								 maker_code[1], maker_code[2], maker_code[3], 0x00,
+								 'i', 'x', 's', 'i', 'i', 'd', 0x00, 0x00, 0x00,
+								 object->group_id, object->class_id, object->instance};
+	return buffer;
+}
 
 ELObject::ELObject(uint8_t instance, uint16_t class_group) : instance(instance), class_group(class_group), class_id(class_group >> 8), group_id(class_group & 0xff) {
 	p->_1081			= 0x8110;
@@ -61,14 +69,11 @@ const char Profile::TAG[] = "EL Prof";
 Profile::Profile(uint8_t major_version, uint8_t minor_version) : ELObject(1, Profile::class_u16), profile{} {
 	profile[0x8a] = maker_code;
 	profile[0x82] = new uint8_t[0x05]{0x04, major_version, minor_version, 0x01, 0x00};
-	profile[0x83] = new uint8_t[0x12]{0x11, 0xfe, maker_code[0], maker_code[1], maker_code[2], 0x0d,
-							    0x05, 0x06, 0x07, 0x08,
-							    0x09, 0x0a, 0x0b, 0x0c,
-							    0x0d, 0x0e, 0x0f, 0x10};	// 識別ID
+	profile[0x83] = generate_identify(this);
 	profile[0xd6] = new uint8_t[0x20]{0x01, 0x00};
-};
+}
 
-Profile * Profile::add(ELObject * object) {
+Profile* Profile::add(ELObject* object) {
 	int i = profile[0xd6][1];
 	if (i >= 10) {
 		ESP_LOGE(TAG, "Possible to regist object less than 11");

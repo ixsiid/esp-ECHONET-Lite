@@ -36,6 +36,8 @@ class ELObject {
 
 	static const uint16_t CLASS_HEMS = 0xff05;
 
+	static uint8_t* generate_identify(ELObject * object);
+
 	virtual uint8_t get(uint8_t* epcs, uint8_t epc_count) = 0;
 	virtual uint8_t set(uint8_t* epcs, uint8_t epc_count) = 0;
 
