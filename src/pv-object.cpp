@@ -4,7 +4,7 @@
 
 const char PV::TAG[] = "EL   PV";
 
-PV::PV(uint8_t instance) : ELObject(instance, PV::class_u16), props{} {
+PV::PV(uint8_t instance) : ELObject(instance, PV::class_u16) {
 	//// スーパークラス
 	// 設置場所
 	props[0x81] = new uint8_t[0x02]{0x01, 0b01111101}; // その他
@@ -110,39 +110,6 @@ uint8_t PV::set(uint8_t* epcs, uint8_t count) {
 
 	return res_count;
 }
-
-uint8_t PV::get(uint8_t* epcs, uint8_t count) {
-	ESP_LOGI(TAG, "PV: get %d", count);
-	p->src_device_class = class_group;
-	p->src_device_id	= instance;
-
-	uint8_t* t = epcs;
-	uint8_t* n = epc_start;
-	uint8_t res_count;
-
-	for (res_count = 0; res_count < count; res_count++) {
-		uint8_t epc = t[0];
-		uint8_t len = t[1];
- 		ESP_LOGD(TAG, "EPC 0x%02x [%d]", epc, len);
-		t += 2;
-
-		if (props[epc] == nullptr) return 0;
-
-		if (len > 0) {
- 			ESP_LOG_BUFFER_HEXDUMP(TAG, t, len, ESP_LOG_INFO);
-			t += len;
-		}
-
-		*n = epc;
-		n++;
-		memcpy(n, props[epc], props[epc][0] + 1);
-		n += props[epc][0] + 1;
-	}
-
-	buffer_length = sizeof(elpacket_t) + (n - epc_start);
-
-	return res_count;
-};
 
 void PV::update() {
 	// 積算値を更新する 0xe1: Wh 4byte

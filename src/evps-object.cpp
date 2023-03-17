@@ -4,7 +4,7 @@
 
 const char EVPS::TAG[] = "EL EVPS";
 
-EVPS::EVPS(uint8_t instance) : ELObject(instance, EVPS::class_u16), props{} {
+EVPS::EVPS(uint8_t instance) : ELObject(instance, EVPS::class_u16) {
 	update_mode_cb = nullptr;
 
 	//// スーパークラス
@@ -122,39 +122,6 @@ uint8_t EVPS::set(uint8_t* epcs, uint8_t count) {
 
 	return res_count;
 }
-
-uint8_t EVPS::get(uint8_t* epcs, uint8_t count) {
-	ESP_LOGI(TAG, "EVPS: get %d", count);
-	p->src_device_class = class_group;
-	p->src_device_id	= instance;
-
-	uint8_t* t = epcs;
-	uint8_t* n = epc_start;
-	uint8_t res_count;
-
-	for (res_count = 0; res_count < count; res_count++) {
-		uint8_t epc = t[0];
-		uint8_t len = t[1];
-		ESP_LOGD(TAG, "EPC 0x%02x [%d]", epc, len);
-		t += 2;
-
-		if (props[epc] == nullptr) return 0;
-
-		if (len > 0) {
-			ESP_LOG_BUFFER_HEXDUMP(TAG, t, len, ESP_LOG_INFO);
-			t += len;
-		}
-
-		*n = epc;
-		n++;
-		memcpy(n, props[epc], props[epc][0] + 1);
-		n += props[epc][0] + 1;
-	}
-
-	buffer_length = sizeof(elpacket_t) + (n - epc_start);
-
-	return res_count;
-};
 
 void EVPS::set_update_mode_cb(update_mode_cb_t cb) {
 	update_mode_cb = cb;
