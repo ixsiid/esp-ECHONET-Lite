@@ -30,6 +30,8 @@ ELObject::ELObject(uint8_t instance, uint16_t class_group)
 	p->dst_device_id	= 0x01;
 
 	memset(props, 0, 0xff * sizeof(uint8_t *));
+	set_cb = nullptr;
+	get_cb = nullptr;
 }
 
 int ELObject::send(UDPSocket* udp, const esp_ip_addr_t* addr) {
@@ -67,7 +69,7 @@ bool ELObject::process(const elpacket_t* recv, uint8_t* epcs) {
 };
 
 uint8_t ELObject::get(uint8_t* epcs, uint8_t count) {
-	ESP_LOGI(TAG, "Get request %d", count);
+	ESP_LOGI(TAG, "(%hx) Get request %d", class_group, count);
 	p->src_device_class = class_group;
 	p->src_device_id	= instance;
 
@@ -78,14 +80,56 @@ uint8_t ELObject::get(uint8_t* epcs, uint8_t count) {
 	for (int i = 0; i < count; i++) {
 		uint8_t epc = t[0];
 		uint8_t len = t[1];
- 		ESP_LOGD(TAG, "EPC 0x%02x [%d]", epc, len);
+ 		ESP_LOGD(TAG, "(%hx) EPC 0x%02x [%d]", class_group, epc, len);
 		t += 2;
 
 		if (len > 0) ESP_LOG_BUFFER_HEXDUMP(TAG, t, len, ESP_LOG_INFO);
 		t += len;
 
 		if (props[epc] == nullptr) continue;
+		if (get_cb) get_cb(this, epc, props[epc][0], &(props[epc][1]));
 
+		*n = epc;
+		n++;
+		memcpy(n, props[epc], props[epc][0] + 1);
+		n += props[epc][0] + 1;
+
+		res_count++;
+	}
+
+	buffer_length = sizeof(elpacket_t) + (n - epc_start);
+
+	return res_count;
+};
+
+uint8_t ELObject::set(uint8_t* epcs, uint8_t count) {
+	ESP_LOGI(TAG, "(%hx) Set request %d", class_group, count);
+	p->src_device_class = class_group;
+	p->src_device_id	= instance;
+
+	uint8_t* t = epcs;
+	uint8_t* n = epc_start;
+	uint8_t res_count = 0;
+
+	for (int i = 0; i < count; i++) {
+		uint8_t epc = t[0];
+		uint8_t len = t[1];
+		ESP_LOGI(TAG, "(%hx) EPC 0x%02x [%d]", class_group, epc, len);
+		t += 2;
+
+		if (props[epc] == nullptr) continue;
+
+		if (set_cb == nullptr) {
+			t += len;
+			continue;
+		}
+		
+		if (set_cb(this, epc, props[epc][0], &(props[epc][1]), t) == SetRequestResult::Reject) {
+			t += len;
+			continue;
+		}
+
+		// メモリ更新後の値を返却する
 		*n = epc;
 		n++;
 		memcpy(n, props[epc], props[epc][0] + 1);

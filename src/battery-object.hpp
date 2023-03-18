@@ -31,8 +31,6 @@ class Battery : public ELObject {
     private:
 	static const char TAG[8];
 
-	uint8_t set(uint8_t* epcs, uint8_t epc_count);
-
 	portTickType timer;
 
     public:

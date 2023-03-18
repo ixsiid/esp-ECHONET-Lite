@@ -1,0 +1,492 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: C:/Users/Tal/.espressif/tools/xtensa-esp32-elf-clang/esp-12.0.1-20210914-x86_64-pc-windows-msvc/bin/clang.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags:  
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c;-I__does_not_exist__ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags:  
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c;-I__does_not_exist__ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Tal/Documents/work/atoms3-echonet-pv/components/esp-ECHONET-Lite/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/Tal/.espressif/tools/ninja/1.10.2/ninja.exe cmTC_f9e27 && [1/2] Building C object CMakeFiles/cmTC_f9e27.dir/CMakeCCompilerABI.c.obj
+clang version 12.0.1 (https://github.com/espressif/llvm-project.git d9341b81fc589c0483d629155bc88e6e85e3db34)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin
+ (in-process)
+ "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\bin\\clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -fno-rounding-math -mconstructor-aliases -mms-bitfields -munwind-tables -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v -resource-dir "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1" -dependency-file "CMakeFiles\\cmTC_f9e27.dir\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_f9e27.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\include" -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32\\include" -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\include" -fdebug-compilation-dir "C:\\Users\\Tal\\Documents\\work\\atoms3-echonet-pv\\components\\esp-ECHONET-Lite\\build\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_f9e27.dir/CMakeCCompilerABI.c.obj -x c C:/Users/Tal/.espressif/tools/cmake/3.23.1/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-mingw32
+ignoring nonexistent directory "C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\x86_64-w64-mingw32\include"
+#include "..." search starts here:
+#include <...> search starts here:
+ C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\lib\clang\12.0.1\include
+ C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\include
+End of search list.
+[2/2] Linking C executable cmTC_f9e27.exe
+FAILED: cmTC_f9e27.exe 
+cmd.exe /C "cd . && C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin\clang.exe  -v CMakeFiles/cmTC_f9e27.dir/CMakeCCompilerABI.c.obj -o cmTC_f9e27.exe -Wl,--out-implib,libcmTC_f9e27.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+clang version 12.0.1 (https://github.com/espressif/llvm-project.git d9341b81fc589c0483d629155bc88e6e85e3db34)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin
+ "ld" -m i386pep -Bdynamic -o cmTC_f9e27.exe crt2.o crtbegin.o "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32\\lib" "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib" "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32/sys-root/mingw/lib" CMakeFiles/cmTC_f9e27.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_f9e27.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\lib\\windows\\libclang_rt.builtins-x86_64.a" -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\lib\\windows\\libclang_rt.builtins-x86_64.a" -lmoldname -lmingwex -lmsvcrt -lkernel32 crtend.o
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Tal/Documents/work/atoms3-echonet-pv/components/esp-ECHONET-Lite/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/Tal/.espressif/tools/ninja/1.10.2/ninja.exe cmTC_619aa && [1/2] Building C object CMakeFiles/cmTC_619aa.dir/testCCompiler.c.obj
+[2/2] Linking C executable cmTC_619aa.exe
+FAILED: cmTC_619aa.exe 
+cmd.exe /C "cd . && C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin\clang.exe   CMakeFiles/cmTC_619aa.dir/testCCompiler.c.obj -o cmTC_619aa.exe -Wl,--out-implib,libcmTC_619aa.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: C:/Users/Tal/.espressif/tools/xtensa-esp32-elf-clang/esp-12.0.1-20210914-x86_64-pc-windows-msvc/bin/clang.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags:  
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c;-I__does_not_exist__ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags:  
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c;-I__does_not_exist__ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Tal/Documents/work/atoms3-echonet-pv/components/esp-ECHONET-Lite/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/Tal/.espressif/tools/ninja/1.10.2/ninja.exe cmTC_b89b3 && [1/2] Building C object CMakeFiles/cmTC_b89b3.dir/CMakeCCompilerABI.c.obj
+clang version 12.0.1 (https://github.com/espressif/llvm-project.git d9341b81fc589c0483d629155bc88e6e85e3db34)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin
+ (in-process)
+ "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\bin\\clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -fno-rounding-math -mconstructor-aliases -mms-bitfields -munwind-tables -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v -resource-dir "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1" -dependency-file "CMakeFiles\\cmTC_b89b3.dir\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_b89b3.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\include" -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32\\include" -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\include" -fdebug-compilation-dir "C:\\Users\\Tal\\Documents\\work\\atoms3-echonet-pv\\components\\esp-ECHONET-Lite\\build\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_b89b3.dir/CMakeCCompilerABI.c.obj -x c C:/Users/Tal/.espressif/tools/cmake/3.23.1/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-mingw32
+ignoring nonexistent directory "C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\x86_64-w64-mingw32\include"
+#include "..." search starts here:
+#include <...> search starts here:
+ C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\lib\clang\12.0.1\include
+ C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\include
+End of search list.
+[2/2] Linking C executable cmTC_b89b3.exe
+FAILED: cmTC_b89b3.exe 
+cmd.exe /C "cd . && C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin\clang.exe  -v CMakeFiles/cmTC_b89b3.dir/CMakeCCompilerABI.c.obj -o cmTC_b89b3.exe -Wl,--out-implib,libcmTC_b89b3.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+clang version 12.0.1 (https://github.com/espressif/llvm-project.git d9341b81fc589c0483d629155bc88e6e85e3db34)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin
+ "ld" -m i386pep -Bdynamic -o cmTC_b89b3.exe crt2.o crtbegin.o "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32\\lib" "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib" "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32/sys-root/mingw/lib" CMakeFiles/cmTC_b89b3.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_b89b3.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\lib\\windows\\libclang_rt.builtins-x86_64.a" -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\lib\\windows\\libclang_rt.builtins-x86_64.a" -lmoldname -lmingwex -lmsvcrt -lkernel32 crtend.o
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Tal/Documents/work/atoms3-echonet-pv/components/esp-ECHONET-Lite/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/Tal/.espressif/tools/ninja/1.10.2/ninja.exe cmTC_89d3d && [1/2] Building C object CMakeFiles/cmTC_89d3d.dir/testCCompiler.c.obj
+[2/2] Linking C executable cmTC_89d3d.exe
+FAILED: cmTC_89d3d.exe 
+cmd.exe /C "cd . && C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin\clang.exe   CMakeFiles/cmTC_89d3d.dir/testCCompiler.c.obj -o cmTC_89d3d.exe -Wl,--out-implib,libcmTC_89d3d.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: C:/Users/Tal/.espressif/tools/xtensa-esp32-elf-clang/esp-12.0.1-20210914-x86_64-pc-windows-msvc/bin/clang.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags:  
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c;-I__does_not_exist__ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags:  
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: CMAKE_CXX_COMPILER-NOTFOUND 
+Build flags: 
+Id flags: -c;-I__does_not_exist__ 
+
+The output was:
+指定されたファイルが見つかりません。
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/Tal/Documents/work/atoms3-echonet-pv/components/esp-ECHONET-Lite/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/Tal/.espressif/tools/ninja/1.10.2/ninja.exe cmTC_311ea && [1/2] Building C object CMakeFiles/cmTC_311ea.dir/CMakeCCompilerABI.c.obj
+clang version 12.0.1 (https://github.com/espressif/llvm-project.git d9341b81fc589c0483d629155bc88e6e85e3db34)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin
+ (in-process)
+ "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\bin\\clang.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -fno-rounding-math -mconstructor-aliases -mms-bitfields -munwind-tables -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v -resource-dir "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1" -dependency-file "CMakeFiles\\cmTC_311ea.dir\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_311ea.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\include" -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32\\include" -internal-isystem "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\include" -fdebug-compilation-dir "C:\\Users\\Tal\\Documents\\work\\atoms3-echonet-pv\\components\\esp-ECHONET-Lite\\build\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_311ea.dir/CMakeCCompilerABI.c.obj -x c C:/Users/Tal/.espressif/tools/cmake/3.23.1/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-mingw32
+ignoring nonexistent directory "C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\x86_64-w64-mingw32\include"
+#include "..." search starts here:
+#include <...> search starts here:
+ C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\lib\clang\12.0.1\include
+ C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\include
+End of search list.
+[2/2] Linking C executable cmTC_311ea.exe
+FAILED: cmTC_311ea.exe 
+cmd.exe /C "cd . && C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin\clang.exe  -v CMakeFiles/cmTC_311ea.dir/CMakeCCompilerABI.c.obj -o cmTC_311ea.exe -Wl,--out-implib,libcmTC_311ea.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+clang version 12.0.1 (https://github.com/espressif/llvm-project.git d9341b81fc589c0483d629155bc88e6e85e3db34)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin
+ "ld" -m i386pep -Bdynamic -o cmTC_311ea.exe crt2.o crtbegin.o "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32\\lib" "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib" "-LC:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\x86_64-w64-mingw32/sys-root/mingw/lib" CMakeFiles/cmTC_311ea.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_311ea.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\lib\\windows\\libclang_rt.builtins-x86_64.a" -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 "C:\\Users\\Tal\\.espressif\\tools\\xtensa-esp32-elf-clang\\esp-12.0.1-20210914-x86_64-pc-windows-msvc\\lib\\clang\\12.0.1\\lib\\windows\\libclang_rt.builtins-x86_64.a" -lmoldname -lmingwex -lmsvcrt -lkernel32 crtend.o
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/Tal/Documents/work/atoms3-echonet-pv/components/esp-ECHONET-Lite/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/Tal/.espressif/tools/ninja/1.10.2/ninja.exe cmTC_ef984 && [1/2] Building C object CMakeFiles/cmTC_ef984.dir/testCCompiler.c.obj
+[2/2] Linking C executable cmTC_ef984.exe
+FAILED: cmTC_ef984.exe 
+cmd.exe /C "cd . && C:\Users\Tal\.espressif\tools\xtensa-esp32-elf-clang\esp-12.0.1-20210914-x86_64-pc-windows-msvc\bin\clang.exe   CMakeFiles/cmTC_ef984.dir/testCCompiler.c.obj -o cmTC_ef984.exe -Wl,--out-implib,libcmTC_ef984.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+clang: error: unable to execute command: program not executable
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+

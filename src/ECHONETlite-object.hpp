@@ -23,6 +23,15 @@ class ELObject {
 	} elpacket_t;
 #pragma pack()
 
+	enum class SetRequestResult {
+		Reject,
+		Accept,
+		Customize,
+	};
+	typedef SetRequestResult (*set_cb_t)(ELObject * self, uint8_t epc, uint8_t length, uint8_t* current_buffer, uint8_t* request_buffer);
+	typedef void (*get_cb_t)(ELObject* self, uint8_t epc, uint8_t length, uint8_t* current_buffer);
+
+    protected:
     private:
 	static const char TAG[8];
 
@@ -36,17 +45,20 @@ class ELObject {
 
 	static const uint16_t CLASS_HEMS = 0xff05;
 
-	static uint8_t* generate_identify(ELObject * object);
+	static uint8_t* generate_identify(ELObject* object);
 
 	uint8_t* props[0xff];
 	uint8_t get(uint8_t* epcs, uint8_t epc_count);
-	virtual uint8_t set(uint8_t* epcs, uint8_t epc_count) = 0;
+	uint8_t set(uint8_t* epcs, uint8_t epc_count);
 
     public:
 	const uint8_t instance;
 	const uint16_t class_group;
 	const uint8_t class_id;
 	const uint8_t group_id;
+
+	set_cb_t set_cb;
+	get_cb_t get_cb;
 
 	ELObject(uint8_t instance, uint16_t class_group);
 
@@ -60,13 +72,13 @@ class Profile : public ELObject {
 
     private:
 	static const char TAG[8];
-	
+
 	uint8_t set(uint8_t* epcs, uint8_t epc_count);
 
     public:
 	Profile(uint8_t major_version, uint8_t minor_version);
 
-	Profile * add(ELObject * object);
+	Profile* add(ELObject* object);
 
 	/*
 	Profile operator<<(ELObject& object) {
