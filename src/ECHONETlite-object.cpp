@@ -143,6 +143,16 @@ uint8_t ELObject::set(uint8_t* epcs, uint8_t count) {
 	return res_count;
 };
 
+void ELObject::notify(uint8_t epc) {
+	p->epc_count  = 1;
+	p->esv	    = 0x74;  // ESV_INFC
+	epc_start[0]  = epc;
+	epc_start[1]  = props[epc][0];
+	epc_start[2]  = props[epc][1];
+	buffer_length = sizeof(elpacket_t) + 3;
+};
+
+
 //// Profile
 const char Profile::TAG[] = "EL Prof";
 
@@ -170,5 +180,3 @@ Profile* Profile::add(ELObject* object) {
 
 	return this;
 };
-
-uint8_t Profile::set(uint8_t* epcs, uint8_t count) { return 0; }

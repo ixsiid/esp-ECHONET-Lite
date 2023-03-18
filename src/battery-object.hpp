@@ -37,5 +37,4 @@ class Battery : public ELObject {
 	Battery(uint8_t instance);
 	void update();
 	void update(int watt);
-	void notify_mode();
 };

@@ -112,12 +112,3 @@ void Battery::update(int watt) {
 	props[0xd3][3] = static_cast<uint8_t>(watt >> 8);
 	props[0xd3][4] = static_cast<uint8_t>(watt >> 0);
 };
-
-void Battery::notify_mode() {
-	p->epc_count  = 1;
-	p->esv	    = 0x74;  // ESV_INFC
-	epc_start[0]  = 0xda;
-	epc_start[1]  = props[0xda][0];
-	epc_start[2]  = props[0xda][1];
-	buffer_length = sizeof(elpacket_t) + 3;
-};

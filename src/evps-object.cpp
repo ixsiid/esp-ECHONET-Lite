@@ -5,8 +5,6 @@
 const char EVPS::TAG[] = "EL EVPS";
 
 EVPS::EVPS(uint8_t instance) : ELObject(instance, EVPS::class_u16) {
-	update_mode_cb = nullptr;
-
 	//// スーパークラス
 	// 設置場所
 	props[0x81] = new uint8_t[0x02]{0x01, 0b01101101};
@@ -73,65 +71,21 @@ EVPS::EVPS(uint8_t instance) : ELObject(instance, EVPS::class_u16) {
 	props[0xe6] = new uint8_t[0x0b]{0x0a, 0x08, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 };
 
-uint8_t EVPS::set(uint8_t* epcs, uint8_t count) {
-	// ESP_LOGI(TAG, "EVPS: get %d", count);
-	p->src_device_class = class_group;
-	p->src_device_id	= instance;
-
-	uint8_t* t = epcs;
-	uint8_t* n = epc_start;
-	uint8_t res_count;
-
-	for (res_count = 0; res_count < count; res_count++) {
-		uint8_t epc = t[0];
-		uint8_t len = t[1];
-		ESP_LOGI(TAG, "EPC 0x%02x [%d]", epc, len);
-		t += 2;
-
-		if (props[epc] == nullptr) return 0;
-
-		switch (epc) {
-			case 0xda:  // 運転モード
-				if (update_mode_cb) {
-					Mode new_mode = update_mode_cb((Mode)props[epc][1], (Mode)*t);
-					if (new_mode == Mode::Unacceptable) return 0;
-
-					props[epc][1] = (uint8_t)new_mode;
-				} else {
-					props[epc][1] = *t;
-				}
-				break;
-			default:
-				memcpy(&(props[epc][1]), t, len);
-				break;
-		}
-
-		if (len > 0) {
-			ESP_LOG_BUFFER_HEXDUMP(TAG, t, len, ESP_LOG_INFO);
-			t += len;
-		}
-
-		// メモリ更新後の値を返却する
-		*n = epc;
-		n++;
-		memcpy(n, props[epc], props[epc][0] + 1);
-		n += props[epc][0] + 1;
-	}
-
-	buffer_length = sizeof(elpacket_t) + (n - epc_start);
-
-	return res_count;
-}
-
-void EVPS::set_update_mode_cb(update_mode_cb_t cb) {
-	update_mode_cb = cb;
+void EVPS::set_mode(Mode mode) {
+	props[0xda][1] = static_cast<uint8_t>(mode);
 };
 
-void EVPS::notify_mode() {
-	p->epc_count  = 1;
-	p->esv	    = 0x74;  // ESV_INFC
-	epc_start[0]  = 0xda;
-	epc_start[1]  = props[0xda][0];
-	epc_start[2]  = props[0xda][1];
-	buffer_length = sizeof(elpacket_t) + 3;
+void EVPS::set_input_output(int watt) {
+	if (watt > 0) {
+		props[0xda][1] = static_cast<uint8_t>(Mode::Charge);
+	} else if (watt < 0) {
+		props[0xda][1] = static_cast<uint8_t>(Mode::Discharge);
+	} else {
+		props[0xda][1] = static_cast<uint8_t>(Mode::Stop);
+	}
+
+	props[0xd3][1] = watt >> 24;
+	props[0xd3][2] = watt >> 16;
+	props[0xd3][3] = watt >> 8;
+	props[0xd3][4] = watt >> 0;
 };

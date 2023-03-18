@@ -64,6 +64,7 @@ class ELObject {
 
 	int send(UDPSocket* udp, const esp_ip_addr_t* addr);
 	bool process(const elpacket_t* recv, uint8_t* epc_array);
+	void notify(uint8_t epc);
 };
 
 class Profile : public ELObject {

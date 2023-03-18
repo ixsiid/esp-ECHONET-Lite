@@ -94,12 +94,3 @@ void PV::update(uint16_t watt) {
 	props[0xe0][1] = watt >> 8;
 	props[0xe0][2] = watt & 0xff;
 };
-
-void PV::notify_mode() {
-	p->epc_count = 1;
-	p->esv = 0x74; // ESV_INFC
-	epc_start[0] = 0xda;
-	epc_start[1] = props[0xda][0];
-	epc_start[2] = props[0xda][1];
-	buffer_length = sizeof(elpacket_t) + 3;
-};

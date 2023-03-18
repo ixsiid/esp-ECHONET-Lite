@@ -17,17 +17,12 @@ class EVPS : public ELObject {
 		Unacceptable		 = 0x00,
 	};
 
-	typedef Mode (*update_mode_cb_t)(Mode current_mode, Mode request_mode);
-
     private:
 	static const char TAG[8];
 
-	uint8_t set(uint8_t* epcs, uint8_t epc_count);
-
-	update_mode_cb_t update_mode_cb;
-
     public:
 	EVPS(uint8_t instance);
-	void set_update_mode_cb(update_mode_cb_t cb);
-	void notify_mode();
+
+	void set_mode(Mode mode);
+	void set_input_output(int watt);
 };

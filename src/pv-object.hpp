@@ -14,5 +14,4 @@ class PV : public ELObject {
 	PV(uint8_t instance);
 	void update();
 	void update(uint16_t watt);
-	void notify_mode();
 };
