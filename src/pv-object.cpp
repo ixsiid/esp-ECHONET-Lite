@@ -68,23 +68,20 @@ PV::PV(uint8_t instance) : ELObject(instance, PV::class_u16) {
 	props[0xe8] = new uint8_t[0x03]{0x02, 0x75, 0x30};
 	
 	timer = xTaskGetTickCount();
+	accumulation_watt_tick = 0;
 };
 
 void PV::update() {
 	// 積算値を更新する 0xe1: Wh 4byte
 	portTickType t = xTaskGetTickCount();
-	uint32_t watt_hour = (props[0xe0][1] << 8 | props[0xe0][0]) * (t - timer) / portTICK_PERIOD_MS / 3600 / 10;
-	uint32_t current_wh = 
-		(props[0xe1][1] << 24) |
-		(props[0xe1][2] << 16) |
-		(props[0xe1][3] << 8) |
-		(props[0xe1][4] << 0);
-	
-	current_wh += watt_hour;
-	props[0xe1][1] = current_wh >> 24;
-	props[0xe1][2] = current_wh >> 16;
-	props[0xe1][3] = current_wh >> 8;
-	props[0xe1][4] = current_wh >> 0;
+	accumulation_watt_tick += (props[0xe0][1] << 8 | props[0xe0][0]) * (t - timer);
+
+	// 1000な気がするけど10になるのはなぞ
+	uint32_t wh = accumulation_watt_tick / portTICK_PERIOD_MS / 3600 / 10;
+	props[0xe1][1] = wh >> 24;
+	props[0xe1][2] = wh >> 16;
+	props[0xe1][3] = wh >> 8;
+	props[0xe1][4] = wh >> 0;
 
 	timer = t;
 };

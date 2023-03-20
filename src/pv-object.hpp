@@ -9,6 +9,7 @@ class PV : public ELObject {
 	static const char TAG[8];
 
 	portTickType timer;
+	uint64_t accumulation_watt_tick;
 
     public:
 	PV(uint8_t instance);
