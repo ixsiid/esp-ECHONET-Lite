@@ -5,6 +5,8 @@ namespace ELConstant {
 constexpr char EL_MULTICAST_IP[] = "224.0.23.0";
 const size_t EL_BUFFER_SIZE	   = 256;
 const uint16_t EL_PORT		   = 3610;
+
+const size_t _MAX_INSTANCE = 10;
 };  // namespace ELConstant
 
 // to HEMS用
@@ -71,15 +73,32 @@ class Profile : public ELObject {
     public:
 	static const uint16_t class_u16 = 0xf00e;
 
+	typedef union {
+		uint8_t buffer[ELConstant::EL_BUFFER_SIZE];
+		struct {
+			elpacket_t p;
+			uint8_t epcs[ELConstant::EL_BUFFER_SIZE - sizeof(elpacket_t)];
+		};
+	} el_packet_buffer_t;
+
     private:
 	static const char TAG[8];
 
 	uint8_t set(uint8_t* epcs, uint8_t epc_count);
 
+	typedef struct {
+		uint16_t class_group;
+		ELObject * instance;
+	} object_t;
+	object_t instances[ELConstant::_MAX_INSTANCE];
+	int instance_count;
+
     public:
 	Profile(uint8_t major_version, uint8_t minor_version);
 
 	Profile* add(ELObject* object);
+
+	bool process_all_instance(UDPSocket * udp, el_packet_buffer_t * buffer);
 
 	/*
 	Profile operator<<(ELObject& object) {

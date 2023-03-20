@@ -13,7 +13,7 @@ uint8_t* ELObject::epc_start	    = buffer + sizeof(elpacket_t);
 
 uint8_t* ELObject::maker_code = new uint8_t[4]{0x03, 0xff, 0xff, 0xff};  // 開発用
 
-uint8_t* ELObject::generate_identify(ELObject * object) {
+uint8_t* ELObject::generate_identify(ELObject* object) {
 	uint8_t* buffer = new uint8_t[0x12]{0x11, 0xfe,
 								 maker_code[1], maker_code[2], maker_code[3], 0x00,
 								 'i', 'x', 's', 'i', 'i', 'd', 0x00, 0x00, 0x00,
@@ -22,14 +22,13 @@ uint8_t* ELObject::generate_identify(ELObject * object) {
 }
 
 ELObject::ELObject(uint8_t instance, uint16_t class_group)
- : instance(instance), class_group(class_group)
- , class_id(class_group >> 8), group_id(class_group & 0xff)
-{
+    : instance(instance), class_group(class_group)
+    , class_id(class_group >> 8), group_id(class_group & 0xff) {
 	p->_1081			= 0x8110;
 	p->dst_device_class = ELObject::CLASS_HEMS;
 	p->dst_device_id	= 0x01;
 
-	memset(props, 0, 0xff * sizeof(uint8_t *));
+	memset(props, 0, 0xff * sizeof(uint8_t*));
 	set_cb = nullptr;
 	get_cb = nullptr;
 }
@@ -75,12 +74,13 @@ uint8_t ELObject::get(uint8_t* epcs, uint8_t count) {
 
 	uint8_t* t = epcs;
 	uint8_t* n = epc_start;
+
 	uint8_t res_count = 0;
 
 	for (int i = 0; i < count; i++) {
 		uint8_t epc = t[0];
 		uint8_t len = t[1];
- 		ESP_LOGD(TAG, "(%hx) EPC 0x%02x [%d]", class_group, epc, len);
+		ESP_LOGD(TAG, "(%hx) EPC 0x%02x [%d]", class_group, epc, len);
 		t += 2;
 
 		if (len > 0) ESP_LOG_BUFFER_HEXDUMP(TAG, t, len, ESP_LOG_INFO);
@@ -109,6 +109,7 @@ uint8_t ELObject::set(uint8_t* epcs, uint8_t count) {
 
 	uint8_t* t = epcs;
 	uint8_t* n = epc_start;
+
 	uint8_t res_count = 0;
 
 	for (int i = 0; i < count; i++) {
@@ -123,7 +124,7 @@ uint8_t ELObject::set(uint8_t* epcs, uint8_t count) {
 			t += len;
 			continue;
 		}
-		
+
 		if (set_cb(this, epc, props[epc][0], &(props[epc][1]), t) == SetRequestResult::Reject) {
 			t += len;
 			continue;
@@ -152,31 +153,62 @@ void ELObject::notify(uint8_t epc) {
 	buffer_length = sizeof(elpacket_t) + 3;
 };
 
-
 //// Profile
 const char Profile::TAG[] = "EL Prof";
 
 // Versionは、ECHONET lite規格書のVersion
 // not 機器オブジェクト詳細規定
-Profile::Profile(uint8_t major_version, uint8_t minor_version) : ELObject(1, Profile::class_u16) {
+Profile::Profile(uint8_t major_version, uint8_t minor_version)
+	 : ELObject(1, Profile::class_u16), instances{} {
 	props[0x8a] = maker_code;
 	props[0x82] = new uint8_t[0x05]{0x04, major_version, minor_version, 0x01, 0x00};
 	props[0x83] = generate_identify(this);
 	props[0xd6] = new uint8_t[0x20]{0x01, 0x00};
+
+	instances[0] = {
+	    .class_group = Profile::class_u16,
+	    .instance	  = this,
+	};
+	instance_count = 1;
 }
 
 Profile* Profile::add(ELObject* object) {
-	int i = props[0xd6][1];
-	if (i >= 10) {
-		ESP_LOGE(TAG, "Possible to regist object less than 11");
+	if (instance_count >= ELConstant::_MAX_INSTANCE) {
+		ESP_LOGE(TAG, "Possible to regist object less than %d", ELConstant::_MAX_INSTANCE + 1);
 		return this;
 	}
+	instances[i + 1] = {
+	    .class_group = object->class_group,
+	    .instance	  = object,
+	};
+	instance_count++;
+
 	props[0xd6][2 + i * 3 + 0] = object->group_id;
 	props[0xd6][2 + i * 3 + 1] = object->class_id;
 	props[0xd6][2 + i * 3 + 2] = object->instance;
 
-	props[0xd6][1] += 1;
-	props[0xd6][0] += 3;
+	props[0xd6][1] = instance_count;
+	props[0xd6][0] = instance_count * 3 - 2; // instancesに含まれているProfileは除外するため -2
 
 	return this;
+};
+
+bool Profile::process_all_instance(UDPSocket* udp, el_packet_buffer_t* buffer) {
+	esp_ip_addr_t remote_addr;
+	int packet_size = udp->read(buffer->buffer, ELConstant::EL_BUFFER_SIZE, &remote_addr);
+
+	if (packet_size == 0) return false;
+
+	for (int i = 0; i < instance_count; i++) {
+		if (buffer->p.dst_device_class == instances[i].class_group) {
+			ELObject* obj = instances[i].instance;
+			if (obj->process(&(buffer->p), buffer->epcs) > 0) {
+				obj->send(udp, &remote_addr);
+			}
+			return true;
+		}
+	}
+
+	ESP_LOGE(TAG, "Unknown class access: %hx", buffer->p.dst_device_class);
+	return false;
 };
