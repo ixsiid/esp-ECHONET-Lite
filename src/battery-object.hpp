@@ -31,6 +31,8 @@ class Battery : public ELObject {
     private:
 	static const char TAG[8];
 
+	uint64_t accumulation_charging_watt_tick;
+	uint64_t accumulation_discharging_watt_tick;
 	portTickType timer;
 
     public:
