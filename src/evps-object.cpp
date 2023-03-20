@@ -93,18 +93,18 @@ void EVPS::update() {
 		accumulation_charging_watt_tick += watt_tick;
 		uint32_t wh = accumulation_charging_watt_tick / portTICK_PERIOD_MS / 3600 / 10;
 
-		props[0xd6][1] = wh >> 24;
-		props[0xd6][2] = wh >> 16;
-		props[0xd6][3] = wh >> 8;
-		props[0xd6][4] = wh >> 0;
-	} else {
-		accumulation_discharging_watt_tick += watt_tick;
-		uint32_t wh = accumulation_discharging_watt_tick / portTICK_PERIOD_MS / 3600 / 10;
-
 		props[0xd8][1] = wh >> 24;
 		props[0xd8][2] = wh >> 16;
 		props[0xd8][3] = wh >> 8;
 		props[0xd8][4] = wh >> 0;
+	} else if (watt < 0) {
+		accumulation_discharging_watt_tick += watt_tick;
+		uint32_t wh = accumulation_discharging_watt_tick / portTICK_PERIOD_MS / 3600 / 10;
+
+		props[0xd6][1] = wh >> 24;
+		props[0xd6][2] = wh >> 16;
+		props[0xd6][3] = wh >> 8;
+		props[0xd6][4] = wh >> 0;
 	}
 };
 
