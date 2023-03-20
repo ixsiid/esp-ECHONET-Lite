@@ -177,18 +177,22 @@ Profile* Profile::add(ELObject* object) {
 		ESP_LOGE(TAG, "Possible to regist object less than %d", ELConstant::_MAX_INSTANCE + 1);
 		return this;
 	}
-	instances[i + 1] = {
+	instances[instance_count] = {
 	    .class_group = object->class_group,
 	    .instance	  = object,
 	};
 	instance_count++;
 
-	props[0xd6][2 + i * 3 + 0] = object->group_id;
-	props[0xd6][2 + i * 3 + 1] = object->class_id;
-	props[0xd6][2 + i * 3 + 2] = object->instance;
+	// instancesに含まれているProfileは除外する	
+	int i = instance_count - 1;
+	props[0xd6][i * 3 - 1] = object->group_id;
+	props[0xd6][i * 3 + 0] = object->class_id;
+	props[0xd6][i * 3 + 1] = object->instance;
 
-	props[0xd6][1] = instance_count;
-	props[0xd6][0] = instance_count * 3 - 2; // instancesに含まれているProfileは除外するため -2
+	props[0xd6][0] = 1 + i * 3; 
+	props[0xd6][1] = i;
+
+	ESP_LOG_BUFFER_HEXDUMP(TAG, props[0xd6], props[0xd6][0] + 1, ESP_LOG_ERROR);
 
 	return this;
 };
