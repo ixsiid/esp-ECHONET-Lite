@@ -52,4 +52,5 @@ class EVPS : public ELObject {
 	void set_mode(Mode mode);
 	void update();
 	void update_input_output(int watt);
+	void update_remain_battery_ratio(uint8_t ratio); // 0 - 100%, 0x00 - 0x64
 };

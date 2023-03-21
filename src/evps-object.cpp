@@ -123,3 +123,7 @@ void EVPS::update_input_output(int watt) {
 	props[0xd3][3] = watt >> 8;
 	props[0xd3][4] = watt >> 0;
 };
+
+void EVPS::update_remain_battery_ratio(uint8_t ratio) {
+	props[0xe4][1] = ratio;
+};
