@@ -44,7 +44,7 @@
 			"get": true,
 			"set": false,
 			"notify": false,
-			"value": "0x00"
+			"value": "0x01"
 		},
 		"0xd1": {
 			"description": "発電要請時刻設定0xhhmmhhmm",
