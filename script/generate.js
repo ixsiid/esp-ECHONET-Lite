@@ -29,12 +29,14 @@ process.argv.filter((_, i) => i >= 2)
 		});
 		console.log('Done');
 
+		const class_name = data.name.replace(/\s/g, '');
+		const file_name = data.name.toLowerCase().replace(/\s/g, '-') + '-object';
+		assert(!fs.existsSync(`../src/${file_name}.hpp`));
+		assert(!fs.existsSync(`../src/${file_name}.cpp`));
+
 		const gets = [0x81, 0x82, 0x88, 0x8a, 0x9d, 0x9e, 0x9f];
 		const sets = [];
 		const notify = [];
-
-		const class_name = data.name.replace(/\s/g, '');
-		const file_name = data.name.toLowerCase().replace(/\s/g, '-') + '-object';
 
 		const super_props = [
 			['0x81', '設置場所', [data.place]],
