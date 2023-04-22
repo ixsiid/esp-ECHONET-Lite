@@ -1,0 +1,22 @@
+{
+	"name": "Light",
+	"group": "0x02",
+	"class": "0x90",
+	"place": "0b01111101",
+	"properties": {
+		"0x80": {
+			"description": "動作状態: ON 0x30, OFF 0x31",
+			"get": true,
+			"set": true,
+			"notify": true,
+			"value": "0x31"
+		},
+		"0xb6": {
+			"description": "モード: 自動0x41, 通常灯0x42, 常夜灯0x43, カラー灯0x45",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x42"
+		}
+	}
+}

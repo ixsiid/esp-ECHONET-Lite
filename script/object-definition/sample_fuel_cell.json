@@ -1,0 +1,64 @@
+{
+	"name": "Fuel Cell",
+	"group": "0x02",
+	"class": "0x7c",
+	"place": "0b01111101",
+	"properties": {
+		"0x80": {
+			"description": "動作状態: ON 0x30, OFF 0x31",
+			"get": true,
+			"set": false,
+			"notify": true,
+			"value": "0x31"
+		},
+		"0xc2": {
+			"description": "定格発電出力 [W]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x0bb8"
+		},
+		"0xc4": {
+			"description": "瞬時発電電力 [W]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x0000"
+		},
+		"0xc5": {
+			"description": "積算電力量 [0.001kWh]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x00000000"
+		},
+		"0xcb": {
+			"description": "発電動作状態: 発電中0x41, 停止中0x42, 起動中0x43, 停止動作中0x44, アイドル中0x45",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x42"
+		},
+		"0xd0": {
+			"description": "系統連系状態: 逆潮流可0x00, 独立0x01, 逆潮流不可0x02",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x00"
+		},
+		"0xd1": {
+			"description": "発電要請時刻設定0xhhmmhhmm",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0xffffffff"
+		},
+		"0xd2": {
+			"description": "発電要請時指定発電状態: 定格最大0x41, 負荷追従0x42",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x41"
+		}
+	}
+}
