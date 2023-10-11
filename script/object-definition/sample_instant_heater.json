@@ -1,0 +1,44 @@
+{
+	"name": "Instant Heater",
+	"group": "0x02",
+	"class": "0x72",
+	"place": "0b01111101",
+	"properties": {
+		"0x80": {
+			"description": "動作状態: ON 0x30, OFF 0x31",
+			"get": true,
+			"set": false,
+			"notify": true,
+			"value": "0x31"
+		},
+		"0xd0": {
+			"description": "給湯器燃焼状態 燃焼状態有0x41, 燃焼状態無0x42",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x42"
+		},
+		"0xe1": {
+			"description": "風呂温度設定値 0x00 - 0x64 (0 - 100℃)",
+			"required": false,
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x24"
+		},
+		"0xe2": {
+			"description": "風呂給湯器燃焼状態 燃焼状態有0x41, 燃焼状態無0x42",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x42"
+		},
+		"0xe3": {
+			"description": "風呂自動モード 自動入0x41, 自動解除0x42",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x42"
+		}
+	}
+}
