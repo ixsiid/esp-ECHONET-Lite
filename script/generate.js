@@ -56,14 +56,15 @@ process.argv.filter((_, i) => i >= 2)
 			if (props.length < 16) {
 				return [props.length, ...props].map(x => '0x' + x.toString(16));
 			}
-			return ['0x11', '0x' + props.length.toString(16).padStart(2, '0'),
-				'\n	                              // fedcba98',
-				...Array.from(Array(16)).map((_, x) => {
-					const t = props.filter(p => (p % 16) == x).map(p => (p - x) / 16);
-					return '\n	                               0b'
-						+ Array.from(Array(8)).map((_, i) => t.includes(15 - i) ? '1' : '0').join('')
-						+ ' // 0x_' + x.toString(16);
-				})];
+
+			return ['0x' + props.length.toString(16).padStart(2, '0'),
+			'\n//	                                  fedcba98',
+			...Array.from(Array(16)).map((_, x) => {
+				const t = props.filter(p => (p % 16) == x).map(p => (p - x) / 16);
+				return '\n	                                0b'
+					+ Array.from(Array(8)).map((_, i) => t.includes(15 - i) ? '1' : '0').join('')
+					+ ' /* 0x_' + x.toString(16) + ' */';
+			})];
 		};
 		super_props.find(([k]) => k == '0x9d').push(to_map(notify));
 		super_props.find(([k]) => k == '0x9e').push(to_map(sets));
@@ -94,9 +95,9 @@ class ${class_name} : public ELObject {
 
 			assert(property_value instanceof Array);
 			// データがあるときは1byte目にデータ長を入れる
-			property_value.unshift('0x' + property_value.length.toString(16).padStart(2, '0'));
-
-			value.push(`new uint8_t[0x${(property_value.length).toString(16).padStart(2, '0')
+			const length = property_value.filter(x => !x.startsWith('\n//')).length;
+			property_value.unshift('0x' + length.toString(16).padStart(2, '0'));
+			value.push(`new uint8_t[0x${(length + 1).toString(16).padStart(2, '0')
 				}]{${property_value.join(', ')}}`);
 		});
 
