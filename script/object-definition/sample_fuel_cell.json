@@ -7,9 +7,9 @@
 		"0x80": {
 			"description": "動作状態: ON 0x30, OFF 0x31",
 			"get": true,
-			"set": false,
+			"set": true,
 			"notify": true,
-			"value": "0x31"
+			"value": "0x30"
 		},
 		"0xc2": {
 			"description": "定格発電出力 [W]",
@@ -36,7 +36,7 @@
 			"description": "発電動作状態: 発電中0x41, 停止中0x42, 起動中0x43, 停止動作中0x44, アイドル中0x45",
 			"get": true,
 			"set": true,
-			"notify": false,
+			"notify": true,
 			"value": "0x42"
 		},
 		"0xd0": {
