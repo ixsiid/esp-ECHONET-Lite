@@ -48,7 +48,7 @@ process.argv.filter((_, i) => i >= 2)
 			['0x9f', 'Getプロパティマップ'],
 		];
 
-		notify.push(...props.filter(([_, v]) => notify.get).map(([k, _]) => parseInt(k, 16)));
+		notify.push(...props.filter(([_, v]) => v.notify).map(([k, _]) => parseInt(k, 16)));
 		sets.push(...props.filter(([_, v]) => v.set).map(([k, _]) => parseInt(k, 16)));
 		gets.push(...props.filter(([_, v]) => v.get).map(([k, _]) => parseInt(k, 16)));
 		console.log(gets.map(x => '0x' + x.toString(16)));
@@ -118,7 +118,7 @@ ${props.map(([k, { description, value }]) => {
 				.map(hex => '0x' + hex);
 			if (v.unshift('0x' + v.length.toString(16).padStart(2, '0')));
 			return `	// ${description}
-	props[${k}] = new uint8_t[0x${(v.length + 1).toString(16).padStart(2, '0')}]{${v.join(', ')}};`;
+	props[${k}] = new uint8_t[0x${v.length.toString(16).padStart(2, '0')}]{${v.join(', ')}};`;
 		}).join('\n')}
 };
 `;
