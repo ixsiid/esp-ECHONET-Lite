@@ -1,0 +1,113 @@
+{
+	"name": "Water Heater 2",
+	"group": "0x02",
+	"class": "0x6b",
+	"place": "0b01111101",
+	"properties": {
+		"0x80": {
+			"description": "動作状態: ON 0x30, OFF 0x31",
+			"get": true,
+			"set": true,
+			"notify": true,
+			"value": "0x31"
+		},
+		"0xb0": {
+			"description": "自動沸き上げ: 自動沸き上げ0x41, 手動沸き上げ0x42, 手動沸き上げ停止0x43",
+			"get": true,
+			"set": true,
+			"notify": true,
+			"value": "0x41"
+		},
+		"0xb2": {
+			"description": "沸き上げ中状態: 沸き上げ中0x41, 非沸き上げ中0x42",
+			"get": true,
+			"set": false,
+			"notify": true,
+			"value": "0x42"
+		},
+		"0xc0": {
+			"description": "昼間沸き増しの許可: 許可0x41, 禁止0x42",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x41"
+		},
+		"0xc3": {
+			"description": "給湯中状態: 給湯中0x41, 非給湯中0x42",
+			"get": true,
+			"set": false,
+			"notify": true,
+			"value": "0x42"
+		},
+		"0xe3": {
+			"description": "風呂自動モード: 入0x41, 解除0x42",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x42"
+		},
+		"0xc7": {
+			"description": "エネルギーシフト参加状態: 参加0x01, 不参加0x00",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x00"
+		},
+		"0xc8": {
+			"description": "沸き上げ開始基準時刻: 20時 - 1時 0x14 - 0x01",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x15"
+		},
+		"0xc9": {
+			"description": "エネルギーシフト回数: 0x01回, 0x02回",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x01"
+		},
+		"0xca": {
+			"description": "1回目の昼間沸き上げシフト時刻",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x00"
+		},
+		"0xcb": {
+			"description": "電力量予測値 [Wh]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x00000000"
+		},
+		"0xcc": {
+			"description": "電力量 [W]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x0000"
+		},
+		"0xcd": {
+			"description": "2回目の昼間沸き上げシフト時刻",
+			"get": true,
+			"set": true,
+			"notify": false,
+			"value": "0x00"
+		},
+		"0xce": {
+			"description": "電力量予測値 [Wh]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x00000000"
+		},
+		"0xcf": {
+			"description": "電力量 [W]",
+			"get": true,
+			"set": false,
+			"notify": false,
+			"value": "0x0000"
+		}
+	}
+}
