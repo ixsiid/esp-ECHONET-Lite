@@ -54,7 +54,7 @@ process.argv.filter((_, i) => i >= 2)
 		console.log(gets.map(x => '0x' + x.toString(16)));
 		const to_map = props => {
 			if (props.length < 16) {
-				return [props.length, ...props].map(x => '0x' + x.toString(16));
+				return [props.length, ...props].map(x => '0x' + x.toString(16).padStart(2, '0'));
 			}
 
 			return ['0x' + props.length.toString(16).padStart(2, '0'),
