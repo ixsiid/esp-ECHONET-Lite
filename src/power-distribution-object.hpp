@@ -7,9 +7,15 @@ class PowerDistribution : public ELObject {
 
     private:
 	static const char TAG[8];
-	uint16_t * amperes;
-	portTickType * ticks;
 	uint8_t ch_count;
+
+	typedef struct {
+		portTickType tick;
+		uint8_t voltage;
+		uint16_t ampere;
+		uint32_t watt_tick;
+	} measure_t;
+	measure_t * measures;
 
     public:
 	PowerDistribution(uint8_t instance, uint8_t ch_count);
